@@ -1,127 +1,143 @@
+<div align="center">
+
 # Vigneshwaran Panchatsaram — Portfolio
 
-Personal portfolio for a NetSuite Technical Consultant, built with **React 18**, **Vite 5** and **Lucide React** icons. It has no other runtime dependencies.
+**NetSuite Technical Consultant · SuiteScript 2.1 · ERP Integrations · Automation · Data Migration**
 
-## Requirements
+The source code for my personal portfolio website, built with React and Vite.
 
-- Node.js 18 or newer (20 LTS recommended)
-- npm 9 or newer
+![React](https://img.shields.io/badge/React-18-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-5-20232A?style=flat-square&logo=vite&logoColor=646CFF)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-20232A?style=flat-square&logo=javascript&logoColor=F7DF1E)
+![Vercel](https://img.shields.io/badge/Hosted%20on-Vercel-20232A?style=flat-square&logo=vercel&logoColor=white)
 
-## Run it locally
+</div>
 
-```bash
-npm install
-npm run dev        # starts the site at http://localhost:5173
-```
+---
 
-## Production build
+## Overview
 
-```bash
-npm run build      # writes the optimized site to /dist
-npm run preview    # serves /dist locally at http://localhost:4173 to check it
-```
+This site presents my work as an Oracle NetSuite Technical Consultant: SuiteScript development, third-party integrations, custom ERP solutions, data migration and certifications. It is a single-page React application with no backend. All content lives in plain data files, so updating the site rarely means touching a component.
 
-## Updating content
+## Preview
 
-All text lives in `src/data/`. You rarely need to touch a component.
+<p align="center">
+  <img src="public/og-image.png" alt="Portfolio share banner: Vigneshwaran Panchatsaram, NetSuite Technical Consultant" width="720">
+</p>
 
-| What to change | File |
+## Features
+
+- **Sections:** Hero, About, Technical Skills, Professional Experience, Projects & Integrations, Custom Solutions, Certifications, Technical Approach, Contact and Footer
+- **Integration project cards** with a data-flow diagram, the business problem, the technical solution and an expandable "My contribution" panel
+- **Project category filters** (Legal Tech, Retail, Finance & Banking, E-commerce, Data & APIs)
+- **Responsive navigation** with active-section highlighting and a mobile menu (closes with `Esc`)
+- **Resume download** served from `public/`
+- **Contact options:** email link with copy-to-clipboard, LinkedIn and GitHub
+- **Accessibility:** skip link, visible focus states, `aria-expanded` on toggles, and respect for the reduced-motion setting
+- **Scroll-reveal animations** and a back-to-top button
+- **Social share metadata** (Open Graph and Twitter card)
+
+## Tech stack
+
+| Area | Technology |
 | --- | --- |
-| Name, email, phone, LinkedIn, **GitHub URL**, **resume path**, availability badge | `src/data/site.js` |
-| Skill groups and chips | `src/data/skills.js` |
-| Projects, their data-flow diagrams and filter categories | `src/data/projects.js` |
-| Custom solutions | `src/data/solutions.js` |
-| Certifications and **verification links** | `src/data/certifications.js` |
-
-### Things you should configure
-
-1. **GitHub profile** — set `github` in `src/data/site.js`, e.g. `'https://github.com/your-username'`. While it is empty, every GitHub button is hidden, so there are no dead links.
-2. **Resume PDF** — the current resume is at `public/Vigneshwaran_Panchatsaram_NetSuite_Resume.pdf`. To update it, replace that file. If you use a different file name, change `resume` in `src/data/site.js` to match.
-3. **Certification verification links** — add each credential URL to `verifyUrl` in `src/data/certifications.js`. A "Verify credential" link appears on that card only when a URL is set.
-4. **Availability badge** — hidden by default. Set `availability.show` to `true` in `src/data/site.js` to show it in the hero, and edit its `label`.
-5. **Share preview image** — `public/og-image.png` is used when the site is shared on LinkedIn, WhatsApp and similar apps. Replace it with your own 1200×630 image if you like. Once the site has its final domain, you can make the `og:image` URL in `index.html` absolute (e.g. `https://your-domain.com/og-image.png`) for the most reliable previews.
-
-### Adding a project
-
-Add an object to the `projects` array in `src/data/projects.js`:
-
-```js
-{
-  name: 'New Integration',
-  category: 'Retail | Order Management',
-  filter: 'Retail',            // must match one of projectFilters
-  problem: 'What needed to change.',
-  solution: 'What was built.',
-  flow: [                      // drawn left to right on the card
-    { label: 'External App', kind: 'ext' },
-    { label: 'REST API', kind: 'mid' },
-    { label: 'NetSuite', kind: 'ns' },
-  ],
-  bidirectional: false,
-  contributions: ['What you did', 'What else you did'],
-  tech: ['NetSuite', 'SuiteScript 2.1'],
-}
-```
-
-### Adding a certification
-
-Add an entry to `src/data/certifications.js`:
-
-```js
-{ name: 'Certification name', issuer: 'Oracle NetSuite', date: 'March 2027', verifyUrl: '' }
-```
+| UI | React 18 |
+| Build tool | Vite 5 with `@vitejs/plugin-react` |
+| Icons | Lucide React |
+| Styling | Plain CSS with design tokens (`src/index.css`) |
+| Fonts | Manrope and DM Mono (Google Fonts) |
+| Hosting | Vercel |
 
 ## Project structure
 
 ```
-src/
-  components/      Navbar, Hero, About, Skills, Experience, Projects, Solutions,
-                   Certifications, Approach, Contact, Footer, BackToTop,
-                   hooks.jsx (scroll reveal + active section), icons.jsx (LinkedIn/GitHub logos)
-  data/            site.js, skills.js, projects.js, solutions.js, certifications.js
-  App.jsx
-  main.jsx
-  index.css        All styles and design tokens (colors, fonts, spacing)
-public/            favicon.svg, og-image.png, resume PDF
+vigneshwaran-portfolio/
+├── public/
+│   ├── favicon.svg
+│   ├── og-image.png                 # social share image (1200×630)
+│   └── Vigneshwaran_Panchatsaram_NetSuite_Resume.pdf
+├── src/
+│   ├── components/                  # Navbar, Hero, About, Skills, Experience, Projects,
+│   │                                # Solutions, Certifications, Approach, Contact,
+│   │                                # Footer, BackToTop, hooks.jsx, icons.jsx
+│   ├── data/                        # site.js, skills.js, projects.js,
+│   │                                # solutions.js, certifications.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css                    # all styles and design tokens
+├── index.html
+├── package.json
+├── vercel.json
+└── vite.config.js
 ```
 
-## Push to GitHub
+## Getting started
+
+### Requirements
+
+- Node.js 18 or newer (20 LTS recommended)
+- npm 9 or newer
+
+### Installation
 
 ```bash
-git init
-git add .
-git commit -m "Initial portfolio"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git push -u origin main
+git clone https://github.com/Vignesh-2108/vigneshwaran-portfolio.git
+cd vigneshwaran-portfolio
+npm install
 ```
 
-Create the empty repository on GitHub first, without a README, so the first push goes through cleanly.
-
-## Deploy on Vercel
-
-**From the Vercel dashboard (easiest)**
-
-1. Sign in at [vercel.com](https://vercel.com) with your GitHub account.
-2. Click **Add New → Project** and import the repository.
-3. Vercel detects Vite automatically. The settings should be:
-   - Framework Preset: **Vite**
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-4. Click **Deploy**. Every later push to `main` redeploys the site automatically.
-
-**From the command line**
+### Local development
 
 ```bash
-npm i -g vercel
-vercel          # first deploy, follow the prompts
-vercel --prod   # deploy to production
+npm run dev
 ```
 
-`vercel.json` already contains the build settings, so no extra configuration is needed. To use your own domain, open the project in Vercel → **Settings → Domains**.
+The site runs at http://localhost:5173 with hot reload.
 
-## Accessibility and performance notes
+### Production build
 
-- Keyboard friendly: skip link, visible focus rings, `Esc` closes the mobile menu, expandable project cards use `aria-expanded`.
-- Respects the operating system's **reduced motion** setting by turning off animations and smooth scrolling.
-- No images in the main page, so there is little to load and no layout shift. Fonts load from Google Fonts with `display=swap`.
+```bash
+npm run build      # writes the optimized site to dist/
+npm run preview    # serves dist/ at http://localhost:4173 for a final check
+```
+
+## Deployment
+
+The site is deployed on **Vercel**, connected to this repository. Every push to `main` triggers a new production deployment.
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Vite |
+| Install command | `npm install` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Root directory | `./` |
+
+These settings are also recorded in `vercel.json`. To deploy your own copy, import the repository at [vercel.com/new](https://vercel.com/new) and keep the defaults.
+
+## Updating content
+
+| What to change | File |
+| --- | --- |
+| Name, contact details, LinkedIn, GitHub, resume path, availability badge | `src/data/site.js` |
+| Skill groups | `src/data/skills.js` |
+| Projects, data-flow diagrams and filter categories | `src/data/projects.js` |
+| Custom solutions | `src/data/solutions.js` |
+| Certifications and verification links | `src/data/certifications.js` |
+| Resume PDF | replace the file in `public/` (keep the name or update `resume` in `site.js`) |
+
+A certification card shows a **Verify credential** link only when its `verifyUrl` is filled in.
+
+## Confidentiality
+
+This repository contains only the portfolio website. It holds no client source code, credentials or internal business data. Project descriptions are written at a high level, and client names are left out.
+
+## Contact
+
+- **Email:** [vigneshpanchatsaram@gmail.com](mailto:vigneshpanchatsaram@gmail.com)
+- **LinkedIn:** [linkedin.com/in/vigneshwaran-p-60a301282](https://linkedin.com/in/vigneshwaran-p-60a301282)
+- **GitHub:** [github.com/Vignesh-2108](https://github.com/Vignesh-2108)
+
+---
+
+<p align="center"><i>Building scalable ERP solutions through technology.</i></p>
